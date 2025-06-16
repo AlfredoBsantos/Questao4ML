@@ -1,0 +1,53 @@
+/* Importa uma fonte moderna do Google Fonts (opcional, mas recomendado) */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+
+/* Estilos gerais para o corpo da página */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #121212; /* Fundo escuro */
+    color: #e0e0e0; /* Cor de texto principal (cinza claro) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Faz o corpo ocupar a altura inteira da tela */
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Container principal para o conteúdo */
+.container {
+    background-color: #1e1e1e; /* Um tom de cinza mais claro para o "card" */
+    padding: 40px;
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidade */
+    max-width: 800px;
+    width: 90%;
+}
+
+/* Estilo para o título principal (H1) */
+h1 {
+    color: #bb86fc; /* Um roxo suave e moderno */
+    font-size: 2.5em;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3c3c3c; /* Linha sutil abaixo do título */
+    padding-bottom: 15px;
+}
+
+/* Estilo para o parágrafo de texto */
+p {
+    font-size: 1.1em;
+    font-weight: 300;
+    color: #b0b0b0; /* Cor de texto secundária, um pouco mais escura */
+}
+
+/* Classe especial para destacar texto que parece código ou console */
+.console-text {
+    background-color: #333;
+    color: #f0f0f0;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
