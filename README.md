@@ -2,7 +2,15 @@
 
 Este projeto foi desenvolvido para a disciplina de Machine Learning, com o objetivo de pesquisar e demonstrar o uso da biblioteca **ml5.js** em um caso simples de validação de modelo.
 
-O projeto consiste em uma aplicação web que treina uma rede neural para uma tarefa de classificação (diferenciar cores "claras" de "escuras") e, mais importante, implementa um ciclo completo de validação para avaliar a performance do modelo.
+O projeto consiste em uma aplicação web que treina uma rede neural para uma tarefa de classificação e implementa um ciclo completo de validação para avaliar a performance do modelo.
+
+## 🎥 Apresentação em Vídeo
+
+Uma apresentação completa deste projeto, incluindo a demonstração ao vivo e a discussão sobre a jornada de depuração, está disponível no link abaixo:
+
+[![Assistir no YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=pRhVVsLpQps)
+
+---
 
 ## ✨ Funcionalidades
 
@@ -29,41 +37,31 @@ Para executar este projeto localmente, siga os passos abaixo.
     ```
 
 3.  **Inicie um servidor local:**
-    A maneira mais estável de executar este projeto, devido à forma como as bibliotecas de ML interagem com o navegador, é usando um servidor Python simples.
+    A maneira mais estável de executar este projeto é usando um servidor Python simples.
     ```bash
     python -m http.server
     ```
-    (Use `python3` se o comando acima não funcionar).
 
 4.  **Abra no navegador:**
-    Abra seu navegador e acesse a URL: **`http://localhost:8000`**.
+    Acesse a URL: **`http://localhost:8000`**.
 
 5.  **Observe o Console:**
-    Pressione **F12** para abrir as ferramentas de desenvolvedor e clique na aba "Console" para ver todo o processo de treinamento e validação acontecer.
+    Pressione **F12** para abrir as ferramentas de desenvolvedor e clique na aba "Console".
 
 ---
 
 ##  journeyman A Jornada da Depuração: Um Estudo de Caso
 
-Este projeto se tornou um profundo estudo de caso sobre os desafios do desenvolvimento em Machine Learning no ambiente web (WebML). O erro inicial, que parecia simples, revelou uma série de conflitos complexos no ambiente de execução.
+Este projeto se tornou um profundo estudo de caso sobre os desafios do desenvolvimento em Machine Learning no ambiente web (WebML). O erro inicial, que parecia simples, revelou uma série de conflitos complexos no ambiente de execução. A investigação nos levou a aprender sobre:
 
-O problema central era que o script estava sendo **executado duas vezes**, causando uma falha catastrófica na inicialização do backend do TensorFlow.js. A investigação para resolver isso nos levou a aprender sobre:
-
-1.  **Conflitos de Ambiente Local:** Descobrimos que a causa raiz era uma interferência de processos de segundo plano no sistema operacional.
-    - **Sincronização na Nuvem:** Salvar o projeto em pastas gerenciadas pelo **OneDrive** ou outras pastas de sistema (`Documentos`) causa um comportamento imprevisível. A solução foi mover o projeto para um diretório neutro (`C:\DEV`).
-    - **Software de GPU:** O software da **NVIDIA**, que gerencia a placa de vídeo, estava em conflito direto com a tentativa do navegador de acessar a GPU para WebGL. Desativar seus processos foi um passo crucial para a estabilidade.
-
-2.  **Ordem e Sincronia de Bibliotecas:**
-    - O erro `tf is not defined` nos ensinou que, ao usar funções do motor TensorFlow.js diretamente, é preciso garantir que a biblioteca `tf.js` seja carregada **antes** do `ml5.js`.
-    - O erro `Backend 'undefined'` foi resolvido forçando a inicialização do backend com `await tf.setBackend('webgl')`, uma medida de segurança para contornar a instabilidade do ambiente específico.
+1.  **Conflitos de Ambiente Local:** A importância de não desenvolver em pastas sincronizadas com a nuvem (**OneDrive**) ou pastas de sistema, e como softwares de GPU (**NVIDIA**) podem interferir com o **WebGL**.
+2.  **Ordem e Sincronia de Bibliotecas:** A necessidade de carregar dependências como o **TensorFlow.js** na ordem correta e forçar a inicialização de backends para garantir a estabilidade.
 
 ---
 
 ## 🏁 Conclusão
 
-O objetivo principal de demonstrar um ciclo de validação com `ml5.js` foi alcançado com sucesso. O resultado final é uma aplicação web funcional que treina um modelo e avalia sua acurácia de forma transparente.
-
-Mais importante que o resultado final, no entanto, foi o processo. A depuração dos erros de ambiente proporcionou um aprendizado prático e avançado sobre os desafios reais que podem ocorrer ao se trabalhar com tecnologias que interagem diretamente com o hardware do usuário, como o WebGL.
+O objetivo principal de demonstrar um ciclo de validação com `ml5.js` foi alcançado com sucesso. Mais importante que o resultado final, no entanto, foi o processo de depuração, que proporcionou um aprendizado prático e avançado sobre os desafios reais do desenvolvimento web com Machine Learning.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -71,4 +69,4 @@ Mais importante que o resultado final, no entanto, foi o processo. A depuração
 - CSS3
 - JavaScript (ES6+)
 - **ml5.js**
-- **TensorFlow.js** (carregado como dependência)
+- **TensorFlow.js**
